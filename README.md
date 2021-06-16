@@ -4,11 +4,15 @@ Keep the machine awake by touching the mouse every minute.
 Run it as jar (adjust the path):
 > java -jar ~/Downloads/mouser/Mouser.jar
 
+or with optional stopTime argument:
+> java -jar ~/Downloads/mouser/Mouser.jar 14:28
+
 Could be usefull to add an alias to .zshrc:
 ```
 alias mouser="java -jar ~/Downloads/mouser/Mouser.jar"
 ```
 
+_DEPRECATED! Use stopTime argument!_
 To stop it from running at specific time, AT command could be used. 
 Create a simple kill script first:
 
