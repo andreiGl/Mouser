@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Mouser:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mouser_jar</output-path>
+    <root id="archive" name="Mouser.jar">
+      <element id="module-output" name="Mouser" />
+    </root>
+  </artifact>
+</component>
