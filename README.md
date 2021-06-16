@@ -12,7 +12,7 @@ Could be usefull to add an alias to .zshrc:
 alias mouser="java -jar ~/Downloads/mouser/Mouser.jar"
 ```
 
-
+-----------
 _DEPRECATED! Use stopTime argument!_
 
 To stop it from running at specific time, AT command could be used. 
