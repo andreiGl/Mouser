@@ -1,12 +1,13 @@
 import java.awt.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
+import java.util.Random;
 
 public class Mouser {
 
     private static LocalTime getStopTime(String stop) {
         System.out.println("Setting stopTime to " + stop);
-        LocalTime stopTime = null;
+        LocalTime stopTime;
         try {
             stopTime = LocalTime.parse(stop);
         } catch (DateTimeParseException ex) {
@@ -21,14 +22,14 @@ public class Mouser {
         LocalTime stopTime = stop != null ? getStopTime(stop) : null;
 
         Robot r = new Robot();
+        Random rand = new Random();
+        PointerInfo pInfo;
         int direction = 1;
         while (true) {
             if (stopTime != null && isStopTimeNow(stopTime)) {
                 return;
             }
-
-            r.delay(1000 * 60);
-            PointerInfo pInfo;
+            r.delay(1000 * rand.nextInt(20) + 50);
             do {
                 pInfo = MouseInfo.getPointerInfo();
                 if (pInfo == null) {
