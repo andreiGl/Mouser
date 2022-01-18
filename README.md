@@ -13,7 +13,7 @@ alias mouser="java -jar ~/Downloads/mouser/Mouser.jar"
 ```
 
 -----------
-_DEPRECATED! Use stopTime argument!_
+_DEPRECATED!  Use stopTime argument instead!_
 
 To stop it from running at specific time, AT command could be used. 
 Create a simple kill script first:
