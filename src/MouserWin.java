@@ -3,8 +3,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Random;
 
-public class Mouser {
-
+public class MouserWin {
     private static LocalTime getStopTime(String stop) {
         System.out.println("Setting stopTime to " + stop);
         LocalTime stopTime;
@@ -20,14 +19,13 @@ public class Mouser {
 
     public static void process(String stop) throws AWTException {
         LocalTime stopTime = stop != null ? getStopTime(stop) : null;
-
         Robot r = new Robot();
         Random rand = new Random();
         PointerInfo pInfo;
         int direction = 1;
         while (true) {
             if (stopTime != null && isStopTimeNow(stopTime)) {
-                return;
+                break;
             }
             r.delay(1000 * rand.nextInt(20) + 50);
             do {
@@ -36,7 +34,6 @@ public class Mouser {
                     r.delay(1000 * 2);
                 }
             } while (pInfo == null);
-
             Point p = pInfo.getLocation();
             int x = (int) p.getX();
             int y = (int) p.getY();
@@ -57,9 +54,10 @@ public class Mouser {
     public static void main(String[] args) throws Exception {
         if (args == null || args.length < 1) {
             System.out.println("Optional stopTime could be set in 24h time format, like: 14:28");
-            Mouser.process(null);
+            MouserWin.process(null);
         } else {
-            Mouser.process(args[0]);
+            MouserWin.process(args[0]);
         }
     }
 }
+
