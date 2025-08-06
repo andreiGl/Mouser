@@ -17,7 +17,7 @@ public class MouserMac {
         return stopTime;
     }
 
-    public static void process(String stop) throws AWTException {
+    public static void process(String stop) {
         LocalTime stopTime = stop != null ? getStopTime(stop) : null;
 
         // Start caffeinate process to prevent sleep/screen timeout on macOS
@@ -28,28 +28,16 @@ public class MouserMac {
         } catch (Exception e) {
             System.out.println("Failed to start caffeinate: " + e.getMessage());
         }
-        Robot r = new Robot();
-        Random rand = new Random();
-        PointerInfo pInfo;
-        int direction = 1;
         try {
             while (true) {
                 if (stopTime != null && isStopTimeNow(stopTime)) {
                     break;
                 }
-                r.delay(1000 * rand.nextInt(20) + 50);
-                do {
-                    pInfo = MouseInfo.getPointerInfo();
-                    if (pInfo == null) {
-                        r.delay(1000 * 2);
-                    }
-                } while (pInfo == null);
-                Point p = pInfo.getLocation();
-                int x = (int) p.getX();
-                int y = (int) p.getY();
-                r.mouseMove(x + direction, y);
-                direction *= -1;
+                // Just wait, caffeinate keeps the system awake
+                Thread.sleep(1000 * 10); // sleep for 10 seconds
             }
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted: " + e.getMessage());
         } finally {
             // Stop caffeinate process when done
             if (caffeinateProcess != null) {
@@ -77,4 +65,3 @@ public class MouserMac {
         }
     }
 }
-
