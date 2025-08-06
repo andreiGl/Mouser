@@ -1,15 +1,15 @@
-# MouserMac
+# Mouser
 Keep the machine awake by touching the mouse every minute.
 
 Run it as jar (adjust the path):
-> java -jar ~/Downloads/mouser/MouserMac.jar
+> java -jar ~/Downloads/mouser/Mouser.jar
 
 or with optional stopTime argument (24h time format):
-> java -jar ~/Downloads/mouser/MouserMac.jar 14:28
+> java -jar ~/Downloads/mouser/Mouser.jar 14:28
 
 Could be usefull to add an alias to .zshrc:
 ```
-alias mouser="java -jar ~/Downloads/mouser/MouserMac.jar"
+alias mouser="java -jar ~/Downloads/mouser/Mouser.jar"
 ```
 
 -----------
@@ -21,7 +21,7 @@ Create a simple kill script first:
 killmouser.sh:
 ```
 #!/bin/sh
-process=`pgrep -f MouserMac.jar`
+process=`pgrep -f Mouser.jar`
 kill ${process}
 ```
 
